@@ -13,8 +13,16 @@ extends CharacterBody2D
 @export var roll_cooldown: float = 0.25
 @export var roll_slowdown: float = 600.0   # how quickly the roll bleeds off at the end
 
+@export_group("Shooting")
+@export var fireball_scene: PackedScene
+@export var fire_rate: float = 4.0         # shots per second
+@export var fireball_speed: float = 220.0
+@export var muzzle_distance: float = 14.0  # how far from the player's center the fireball spawns
+
+
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
+var fire_cooldown := 0.0
 var is_rolling := false
 var is_invulnerable := false
 var can_roll := true
@@ -30,7 +38,11 @@ func _physics_process(delta: float) -> void:
 		aim_timer = aim_linger
 	else:
 		aim_timer = maxf(aim_timer - delta, 0.0)
-
+		
+	fire_cooldown -= delta
+	if Input.is_action_pressed("attack") and fire_cooldown <= 0.0 and not is_rolling:
+		_shoot()
+		
 	if Input.is_action_just_pressed("dodge") and can_roll and not is_rolling:
 		_start_roll(input_dir)
 
@@ -41,6 +53,17 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	_update_animation(input_dir)
+
+func _shoot() -> void:
+	fire_cooldown = 1.0 / fire_rate
+	aim_timer = aim_linger  # sprite faces the mouse while shooting
+
+	var aim := _aim_dir()
+	var fb: Projectile = fireball_scene.instantiate()
+	fb.global_position = global_position + aim * muzzle_distance
+	fb.velocity = aim * fireball_speed
+	fb.rotation = aim.angle()
+	get_tree().current_scene.add_child(fb)
 
 func _process_movement(input_dir: Vector2, delta: float) -> void:
 	if input_dir != Vector2.ZERO:
