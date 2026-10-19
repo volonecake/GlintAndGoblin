@@ -29,6 +29,7 @@ var can_roll := true
 var roll_dir := Vector2.ZERO
 var roll_time := 0.0
 var aim_timer := 0.0
+var last_facing := Vector2.DOWN
 
 func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -100,14 +101,21 @@ func _update_animation(input_dir: Vector2) -> void:
 	if is_rolling:
 		return #TODO: add rolling animation here
 
+	var attacking := aim_timer > 0.0
+
+	if attacking:
+		last_facing = _aim_dir()
+	elif input_dir != Vector2.ZERO:
+		last_facing = input_dir
+
+	var dir_name := _direction_name(last_facing)
+
 	if input_dir == Vector2.ZERO:
-		sprite.play("idle")
-		return
-
-	#faces the mouse only while attacking, otherwise faces the direction player is moving towards
-	var facing := _aim_dir() if aim_timer > 0.0 else input_dir
-
-	if absf(facing.x) > absf(facing.y):
-		sprite.play("walk_east" if facing.x > 0 else "walk_west")
+		sprite.play("idle_" + dir_name)
 	else:
-		sprite.play("walk_down" if facing.y > 0 else "walk_up")
+		sprite.play("walk_" + dir_name)
+		
+func _direction_name(v: Vector2) -> String:
+	if absf(v.x) > absf(v.y):
+		return "right" if v.x > 0 else "left"
+	return "down" if v.y > 0 else "up"
