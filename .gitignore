@@ -1,0 +1,13 @@
+
+# Godot-specific ignores
+.godot/
+.import/
+export_presets.cfg
+
+# Mono/C# specifics (if using the .NET version)
+.mono/
+data_*/
+mono_crash_*.log
+
+# System ignores
+.DS_Store
