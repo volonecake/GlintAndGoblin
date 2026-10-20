@@ -29,4 +29,25 @@ tile_set = SubResource("TileSet_h25qb")
 position = Vector2(200, 120)
 
 [node name="Slime2" parent="." unique_id=543430655 instance=ExtResource("3_sugp2")]
-position = Vector2(344, 120)
+position = Vector2(296, 112)
+
+[node name="Slime3" parent="." unique_id=1854389691 instance=ExtResource("3_sugp2")]
+position = Vector2(360, 136)
+
+[node name="Slime4" parent="." unique_id=2042895753 instance=ExtResource("3_sugp2")]
+position = Vector2(448, 232)
+
+[node name="Slime5" parent="." unique_id=431808500 instance=ExtResource("3_sugp2")]
+position = Vector2(272, 232)
+
+[node name="Slime6" parent="." unique_id=793051807 instance=ExtResource("3_sugp2")]
+position = Vector2(352, 184)
+
+[node name="Slime7" parent="." unique_id=1687385103 instance=ExtResource("3_sugp2")]
+position = Vector2(248, 160)
+
+[node name="Slime8" parent="." unique_id=1212028807 instance=ExtResource("3_sugp2")]
+position = Vector2(128, 160)
+
+[node name="Slime9" parent="." unique_id=790537676 instance=ExtResource("3_sugp2")]
+position = Vector2(160, 272)
