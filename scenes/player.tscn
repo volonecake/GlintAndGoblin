@@ -281,7 +281,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1l66c"]
 size = Vector2(18, 27)
 
-[node name="Player" type="CharacterBody2D" unique_id=1512775865]
+[sub_resource type="CircleShape2D" id="CircleShape2D_y4r1p"]
+radius = 9.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1512775865 groups=["player"]]
 collision_layer = 2
 script = ExtResource("1_tuyoq")
 fireball_scene = ExtResource("2_smehm")
@@ -289,8 +292,14 @@ fireball_scene = ExtResource("2_smehm")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=364170053]
 scale = Vector2(0.18, 0.18)
 sprite_frames = SubResource("SpriteFrames_h25qb")
-animation = &"walk_left"
+animation = &"walk_up"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1122324265]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_1l66c")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=78613278]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1000767201]
+shape = SubResource("CircleShape2D_y4r1p")

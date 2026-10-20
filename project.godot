@@ -28,6 +28,10 @@ window/stretch/scale_mode="integer"
 
 enabled=PackedStringArray("res://addons/godot_git/plugin.cfg")
 
+[global_group]
+
+player=""
+
 [input]
 
 move_left={
