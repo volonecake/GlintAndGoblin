@@ -19,4 +19,5 @@ func _physics_process(delta: float) -> void:
 func _on_hit(other: Node) -> void:
 	if other.has_method("take_damage"):
 		other.take_damage(damage, global_position)
+		get_tree().call_group("camera", "add_trauma", 0.1)
 	queue_free()

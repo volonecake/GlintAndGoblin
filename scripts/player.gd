@@ -31,6 +31,7 @@ var roll_time := 0.0
 var aim_timer := 0.0
 var last_facing := Vector2.DOWN
 var knockback_timer := 0.0
+var flash_tween: Tween
 
 func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -68,9 +69,18 @@ func _shoot() -> void:
 	fb.rotation = aim.angle()
 	get_tree().current_scene.add_child(fb)
 
+func _flash() -> void:
+	if flash_tween:
+		flash_tween.kill()
+	sprite.modulate = Color(3, 3, 3)
+	flash_tween = create_tween()
+	flash_tween.tween_property(sprite, "modulate", Color.WHITE, 0.1)
+
 func take_damage(amount: int, from_position: Vector2 = Vector2.ZERO) -> void:
 	if is_invulnerable:
 		return
+	get_tree().call_group("camera", "add_trauma", 0.4)
+	_flash()
 	velocity = (global_position - from_position).normalized() * 220.0
 	knockback_timer = 0.15
 	print("Player hit for ", amount)
@@ -88,6 +98,7 @@ func _start_roll(input_dir: Vector2) -> void:
 	can_roll = false
 	roll_time = 0.0
 	velocity = roll_dir * roll_speed
+	get_tree().call_group("camera", "add_trauma", 0.08)
 
 func _process_roll(delta: float) -> void:
 	roll_time += delta

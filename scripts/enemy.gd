@@ -98,5 +98,6 @@ func _flash() -> void:
 	flash_tween.tween_property(sprite, "modulate", Color.WHITE, 0.1)
 
 func die() -> void:
+	get_tree().call_group("camera", "add_trauma", 0.2)
 	died.emit(self)
 	queue_free()
