@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://f5lh1a0lqfgh"]
+
+[ext_resource type="Script" uid="uid://bfdh3nm1ttqat" path="res://scripts/main_menu.gd" id="1_l72w3"]
+[ext_resource type="Texture2D" uid="uid://c0hqf4mks0nth" path="res://textures/GlintAndGoblin.png" id="1_yqorp"]
+[ext_resource type="Texture2D" uid="uid://bi4smg0256l8j" path="res://textures/start.png" id="2_2wh52"]
+[ext_resource type="Texture2D" uid="uid://b7d05mawqemd" path="res://textures/options.png" id="3_ow34m"]
+[ext_resource type="Theme" uid="uid://du7gqcfumtqgv" path="res://textures/new_theme.tres" id="4_ow34m"]
+
+[node name="MainMenu" type="Control" unique_id=1150685469]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_l72w3")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1263038931]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_yqorp")
+
+[node name="StartButton" type="Button" parent="." unique_id=958912194]
+layout_mode = 0
+offset_left = -12.0
+offset_top = 199.0
+offset_right = 124.0
+offset_bottom = 239.0
+scale = Vector2(1.9, 1.9)
+icon = ExtResource("2_2wh52")
+flat = true
+
+[node name="OptionsButton" type="Button" parent="." unique_id=1757070498]
+layout_mode = 0
+offset_left = 230.00002
+offset_top = 200.0
+offset_right = 366.0
+offset_bottom = 240.0
+scale = Vector2(1.9, 1.9)
+icon = ExtResource("3_ow34m")
+flat = true
+
+[node name="ModePanel" type="CenterContainer" parent="." unique_id=1353908347]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="ModePanel" unique_id=1736264927]
+layout_mode = 2
+
+[node name="ArenaButton" type="Button" parent="ModePanel/VBox" unique_id=792868982]
+layout_mode = 2
+theme = ExtResource("4_ow34m")
+text = "Arena Mode"
+
+[node name="DungeonButton" type="Button" parent="ModePanel/VBox" unique_id=1923756417]
+layout_mode = 2
+theme = ExtResource("4_ow34m")
+text = "Dungeon Mode"
+
+[node name="BackButton" type="Button" parent="ModePanel/VBox" unique_id=1834283639]
+layout_mode = 2
+theme = ExtResource("4_ow34m")
+text = "Back"
+
+[node name="QuitPanel" type="CenterContainer" parent="." unique_id=1061402631]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="QuitPanel" unique_id=208102634]
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="QuitPanel/VBox" unique_id=1188489694]
+layout_mode = 2
+theme = ExtResource("4_ow34m")
+text = "Quit"
+
+[node name="CancelButton" type="Button" parent="QuitPanel/VBox" unique_id=627558058]
+layout_mode = 2
+theme = ExtResource("4_ow34m")
+text = "Back"
+
+[node name="Fade" type="ColorRect" parent="." unique_id=1909490683]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

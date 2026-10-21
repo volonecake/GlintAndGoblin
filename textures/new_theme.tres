@@ -1,0 +1,16 @@
+[gd_resource type="Theme" format=3 uid="uid://du7gqcfumtqgv"]
+
+[ext_resource type="FontFile" uid="uid://doi74crr6fmn0" path="res://textures/OldGoldFont.ttf" id="1_0q0j3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h25qb"]
+bg_color = Color(0, 0, 0, 0.7294118)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 0.7294118)
+
+[resource]
+Button/fonts/font = ExtResource("1_0q0j3")
+Button/styles/normal = SubResource("StyleBoxFlat_h25qb")
+Label/fonts/font = ExtResource("1_0q0j3")
