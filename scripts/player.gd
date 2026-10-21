@@ -111,7 +111,7 @@ func _process_roll(delta: float) -> void:
 	if roll_time >= roll_duration:
 		is_rolling = false
 		is_invulnerable = false
-		await get_tree().create_timer(roll_cooldown).timeout
+		await get_tree().create_timer(roll_cooldown, false).timeout
 		can_roll = true
 
 func _aim_dir() -> Vector2:
