@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://vnss07kfs5wu" path="res://textures/quit.png" id="3_7l7mv"]
 
 [node name="PauseMenu" type="CanvasLayer" unique_id=939579672]
+process_mode = 3
 script = ExtResource("1_5d2l8")
 
 [node name="Dim" type="ColorRect" parent="." unique_id=2077506379]

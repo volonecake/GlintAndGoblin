@@ -19,8 +19,14 @@ extends CharacterBody2D
 @export var fireball_speed: float = 220.0
 @export var muzzle_distance: float = 14.0  # how far from the player's center the fireball spawns
 
+@export_group("Health")
+@export var max_health: int = 5
+@export var hit_invuln_time: float = 0.8
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+
+signal health_changed(current: int, maximum: int)
+signal died
 
 var fire_cooldown := 0.0
 var is_rolling := false
@@ -33,8 +39,16 @@ var last_facing := Vector2.DOWN
 var knockback_timer := 0.0
 var flash_tween: Tween
 
+var health: int
+var hit_timer := 0.0
+var dead := false
+
+func _ready() -> void:
+	health = max_health
+
 func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	hit_timer -= delta
 
 	#refreshes timer when attacking
 	if Input.is_action_pressed("attack"):
@@ -77,13 +91,33 @@ func _flash() -> void:
 	flash_tween.tween_property(sprite, "modulate", Color.WHITE, 0.1)
 
 func take_damage(amount: int, from_position: Vector2 = Vector2.ZERO) -> void:
-	if is_invulnerable:
+	if dead or is_invulnerable or hit_timer > 0.0:
 		return
+	health = maxi(health - amount, 0)
+	hit_timer = hit_invuln_time
+	health_changed.emit(health, max_health)
 	get_tree().call_group("camera", "add_trauma", 0.4)
-	_flash()
 	velocity = (global_position - from_position).normalized() * 220.0
 	knockback_timer = 0.15
-	print("Player hit for ", amount)
+	_blink()
+	if health == 0:
+		_die()
+
+func heal(amount: int) -> void:
+	health = mini(health + amount, max_health)
+	health_changed.emit(health, max_health)
+
+func _blink() -> void:
+	var tw := create_tween().set_loops(int(hit_invuln_time / 0.1))
+	tw.tween_property(sprite, "modulate", Color(10, 10, 10, 1), 0.05)
+	tw.tween_property(sprite, "modulate", Color(1, 1, 1, 1), 0.05)
+
+func _die() -> void:
+	dead = true
+	print("player dead")
+	velocity = Vector2.ZERO
+	set_physics_process(false)   # TODO: death animation
+	died.emit()
 
 func _process_movement(input_dir: Vector2, delta: float) -> void:
 	if input_dir != Vector2.ZERO:
