@@ -305,7 +305,7 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1000767201]
 shape = SubResource("CircleShape2D_y4r1p")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=214936638]
+[node name="GameCamera" type="Camera2D" parent="." unique_id=214936638]
 script = ExtResource("11_d2wvv")
 look_ahead = 0.05
 max_look_distance = 16.0

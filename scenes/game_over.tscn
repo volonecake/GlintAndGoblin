@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://dnq6x0a8ka1od"]
+
+[node name="GameOver" type="CanvasLayer" unique_id=1736021026]
+layer = 11
