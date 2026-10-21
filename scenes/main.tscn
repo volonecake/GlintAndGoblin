@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ctwafw64w0nxy" path="res://scenes/slime.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://c8ftecr3tjhk7" path="res://scenes/pause_menu.tscn" id="4_tbgi4"]
 [ext_resource type="Script" uid="uid://dc7c6ampv6uh8" path="res://scripts/wave_enemy.gd" id="5_tipki"]
+[ext_resource type="PackedScene" uid="uid://ci33ycc04xwsi" path="res://scenes/lizard.tscn" id="7_choun"]
 [ext_resource type="Theme" uid="uid://du7gqcfumtqgv" path="res://textures/new_theme.tres" id="7_tipki"]
 [ext_resource type="PackedScene" uid="uid://dnq6x0a8ka1od" path="res://scenes/game_over.tscn" id="9_85g3d"]
 
@@ -38,6 +39,14 @@ sources/2 = SubResource("TileSetAtlasSource_sugp2")
 [sub_resource type="Resource" id="Resource_tefeu"]
 script = ExtResource("5_tipki")
 scene = ExtResource("3_sugp2")
+metadata/_custom_type_script = "uid://dc7c6ampv6uh8"
+
+[sub_resource type="Resource" id="Resource_81uaw"]
+script = ExtResource("5_tipki")
+scene = ExtResource("7_choun")
+cost = 2
+min_wave = 3
+weight = 0.8
 metadata/_custom_type_script = "uid://dc7c6ampv6uh8"
 
 [sub_resource type="LabelSettings" id="LabelSettings_85g3d"]
@@ -81,7 +90,7 @@ position = Vector2(610, 319)
 script = ExtResource("3_jyhfs")
 entities = NodePath("../Entities")
 spawn_points = NodePath("../SpawnPoints")
-enemy_pool = Array[ExtResource("5_tipki")]([SubResource("Resource_tefeu")])
+enemy_pool = Array[ExtResource("5_tipki")]([SubResource("Resource_tefeu"), SubResource("Resource_81uaw")])
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=4338216]
 

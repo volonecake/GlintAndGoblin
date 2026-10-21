@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://ci33ycc04xwsi"]
+
+[ext_resource type="PackedScene" uid="uid://bqdrhn0oijwb2" path="res://scenes/enemy.tscn" id="1_w5iof"]
+[ext_resource type="Texture2D" uid="uid://b43f2rxxoq4xg" path="res://textures/lizardidle.png" id="2_pu5vo"]
+[ext_resource type="Texture2D" uid="uid://cl43muo3s65xv" path="res://textures/lizardwalk.png" id="3_f52iw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dj3q8"]
+atlas = ExtResource("2_pu5vo")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l421c"]
+atlas = ExtResource("2_pu5vo")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4of7"]
+atlas = ExtResource("3_f52iw")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mbpk"]
+atlas = ExtResource("3_f52iw")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w5iof"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dj3q8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l421c")
+}],
+"loop": 1,
+"name": &"idle_left",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4of7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mbpk")
+}],
+"loop": 0,
+"name": &"walk_left",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_810bd"]
+size = Vector2(27, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nuo7r"]
+size = Vector2(48, 27)
+
+[node name="Lizard" unique_id=666423649 instance=ExtResource("1_w5iof")]
+max_health = 6
+speed = 40.0
+acceleration = 700.0
+contact_damage = 3
+knockback_taken = 80.0
+bounce_force = 185.0
+bounce_stun = 0.3
+hit_stun = 0.15
+
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=908665361]
+sprite_frames = SubResource("SpriteFrames_w5iof")
+animation = &"walk_left"
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=1187871832]
+shape = SubResource("RectangleShape2D_810bd")
+
+[node name="CollisionShape2D" parent="Hitbox" parent_id_path=PackedInt32Array(389256647) index="0" unique_id=1991934630]
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_nuo7r")
