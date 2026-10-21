@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c8ftecr3tjhk7" path="res://scenes/pause_menu.tscn" id="4_tbgi4"]
 [ext_resource type="Script" uid="uid://dc7c6ampv6uh8" path="res://scripts/wave_enemy.gd" id="5_tipki"]
 [ext_resource type="Theme" uid="uid://du7gqcfumtqgv" path="res://textures/new_theme.tres" id="7_tipki"]
+[ext_resource type="PackedScene" uid="uid://dnq6x0a8ka1od" path="res://scenes/game_over.tscn" id="9_85g3d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0wfyh"]
 texture = ExtResource("2_0wfyh")
@@ -84,6 +85,20 @@ enemy_pool = Array[ExtResource("5_tipki")]([SubResource("Resource_tefeu")])
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=4338216]
 
+[node name="Banner" type="Label" parent="HUD" unique_id=1549402875]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_tipki")
+
 [node name="Labels" type="Control" parent="HUD" unique_id=535903755]
 layout_mode = 3
 anchors_preset = 0
@@ -117,5 +132,7 @@ text = "Enemies:"
 label_settings = SubResource("LabelSettings_85g3d")
 
 [node name="PauseMenu" parent="." unique_id=939579672 instance=ExtResource("4_tbgi4")]
+
+[node name="GameOver" parent="." unique_id=1736021026 instance=ExtResource("9_85g3d")]
 
 [editable path="Entities/Player"]

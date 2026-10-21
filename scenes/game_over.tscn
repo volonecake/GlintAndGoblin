@@ -1,4 +1,42 @@
 [gd_scene format=3 uid="uid://dnq6x0a8ka1od"]
 
+[ext_resource type="Script" uid="uid://bk6lhvopy5dcy" path="res://scripts/game_over.gd" id="1_wqhvx"]
+[ext_resource type="Theme" uid="uid://du7gqcfumtqgv" path="res://textures/new_theme.tres" id="2_tbwuq"]
+
 [node name="GameOver" type="CanvasLayer" unique_id=1736021026]
 layer = 11
+script = ExtResource("1_wqhvx")
+
+[node name="Dim" type="ColorRect" parent="." unique_id=905040526]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="Center" type="CenterContainer" parent="." unique_id=1988880970]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Center" unique_id=2116800509]
+layout_mode = 2
+
+[node name="ResultLabel" type="Label" parent="Center/VBox" unique_id=229416191]
+layout_mode = 2
+
+[node name="BestLabel" type="Label" parent="Center/VBox" unique_id=898453486]
+layout_mode = 2
+
+[node name="RetryButton" type="Button" parent="Center/VBox" unique_id=675168246]
+layout_mode = 2
+theme = ExtResource("2_tbwuq")
+text = "Retry"
+
+[node name="MenuButton" type="Button" parent="Center/VBox" unique_id=1835626437]
+layout_mode = 2
+theme = ExtResource("2_tbwuq")
+text = "Menu"
