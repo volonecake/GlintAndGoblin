@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-const MENU_SCENE := "res://scenes/main_menu.tscn"
+const MENU_SCENE := "res://scenes/MainMenu.tscn"
 
 @onready var result_label: Label = $Center/VBox/ResultLabel
 @onready var best_label: Label = $Center/VBox/BestLabel
