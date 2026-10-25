@@ -88,7 +88,7 @@ func _flash() -> void:
 		flash_tween.kill()
 	sprite.modulate = Color(3, 3, 3)
 	flash_tween = create_tween()
-	flash_tween.tween_property(sprite, "modulate", Color.WHITE, 0.1)
+	flash_tween.tween_property(sprite, "modulate", Color.WHITE, 0.5)
 
 func take_damage(amount: int, from_position: Vector2 = Vector2.ZERO) -> void:
 	if dead or is_invulnerable or hit_timer > 0.0:
@@ -109,8 +109,8 @@ func heal(amount: int) -> void:
 
 func _blink() -> void:
 	var tw := create_tween().set_loops(int(hit_invuln_time / 0.1))
-	tw.tween_property(sprite, "modulate", Color(10, 10, 10, 1), 0.05)
-	tw.tween_property(sprite, "modulate", Color(1, 1, 1, 1), 0.05)
+	tw.tween_property(sprite, "modulate", Color(10, 10, 10, 1), 0.01)
+	tw.tween_property(sprite, "modulate", Color(1, 1, 1, 1), 0.01)
 
 func _die() -> void:
 	dead = true
