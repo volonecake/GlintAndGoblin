@@ -47,27 +47,27 @@ region = Rect2(224, 0, 224, 224)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2dvfe"]
 atlas = ExtResource("7_3v2ag")
-region = Rect2(0, 0, 448, 224)
+region = Rect2(0, 0, 431, 224)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_giy8y"]
 atlas = ExtResource("7_3v2ag")
-region = Rect2(448, 0, 448, 224)
+region = Rect2(431, 0, 431, 224)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fdfoy"]
 atlas = ExtResource("7_3v2ag")
-region = Rect2(896, 0, 448, 224)
+region = Rect2(862, 0, 431, 224)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hhpqf"]
 atlas = ExtResource("7_3v2ag")
-region = Rect2(1344, 0, 448, 224)
+region = Rect2(1293, 0, 431, 224)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5jhy"]
 atlas = ExtResource("7_3v2ag")
-region = Rect2(1792, 0, 448, 224)
+region = Rect2(1724, 0, 431, 224)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_holxr"]
 atlas = ExtResource("7_3v2ag")
-region = Rect2(2240, 0, 448, 224)
+region = Rect2(2155, 0, 431, 224)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
 atlas = ExtResource("3_smehm")
@@ -342,6 +342,8 @@ fireball_scene = ExtResource("2_smehm")
 scale = Vector2(0.18, 0.18)
 sprite_frames = SubResource("SpriteFrames_h25qb")
 animation = &"slide_left"
+frame = 5
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1122324265]
 position = Vector2(0, 0.5)

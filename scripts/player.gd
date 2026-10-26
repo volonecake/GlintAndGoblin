@@ -136,8 +136,9 @@ func _start_roll(input_dir: Vector2) -> void:
 	get_tree().call_group("camera", "add_trauma", 0.08)
 
 	last_facing = roll_dir 
+	var is_vertical := absf(roll_dir.x) < 0.1
 
-	if absf(roll_dir.x) > absf(roll_dir.y):
+	if not is_vertical:
 		sprite.flip_h = roll_dir.x > 0.0
 		var frames := sprite.sprite_frames
 		var length := frames.get_frame_count("slide_left") / frames.get_animation_speed("slide_left")
