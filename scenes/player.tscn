@@ -337,6 +337,7 @@ radius = 9.0
 collision_layer = 2
 script = ExtResource("1_tuyoq")
 fireball_scene = ExtResource("2_smehm")
+max_health = 10
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=364170053]
 scale = Vector2(0.18, 0.18)

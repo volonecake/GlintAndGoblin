@@ -10,6 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://ci33ycc04xwsi" path="res://scenes/lizard.tscn" id="7_choun"]
 [ext_resource type="Theme" uid="uid://du7gqcfumtqgv" path="res://textures/new_theme.tres" id="7_tipki"]
 [ext_resource type="PackedScene" uid="uid://dnq6x0a8ka1od" path="res://scenes/game_over.tscn" id="9_85g3d"]
+[ext_resource type="Script" uid="uid://dgoexqdwwy1oy" path="res://scripts/hearts_display.gd" id="9_ya4ey"]
+[ext_resource type="Texture2D" uid="uid://btrnivdj1aiw1" path="res://textures/pleayer_fullhearts_atlas.tres" id="10_a8y0u"]
+[ext_resource type="Texture2D" uid="uid://8jm1msh8ch1s" path="res://textures/pleayer_halfhearts_atlas.tres" id="11_jkv2x"]
+[ext_resource type="Texture2D" uid="uid://clq3d7svflx0q" path="res://textures/pleayernohearts_atlas.tres" id="12_jbj1t"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ya4ey"]
 texture = ExtResource("2_choun")
@@ -120,7 +124,6 @@ spawn_points = NodePath("../SpawnPoints")
 enemy_pool = Array[ExtResource("5_tipki")]([SubResource("Resource_tefeu"), SubResource("Resource_81uaw")])
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=4338216]
-visible = false
 
 [node name="Banner" type="Label" parent="HUD" unique_id=1549402875]
 anchors_preset = 8
@@ -135,38 +138,42 @@ offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("7_tipki")
+metadata/_edit_use_anchors_ = true
 
 [node name="Labels" type="Control" parent="HUD" unique_id=535903755]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
 [node name="WaveLabel" type="Label" parent="HUD/Labels" unique_id=1513839366]
 layout_mode = 1
-offset_right = 40.0
-offset_bottom = 23.0
+offset_top = 64.0
+offset_right = 96.0
+offset_bottom = 87.0
 theme = ExtResource("7_tipki")
 text = "WAVE: 67"
 label_settings = SubResource("LabelSettings_85g3d")
-
-[node name="HPLabel" type="Label" parent="HUD/Labels" unique_id=709511582]
-layout_mode = 0
-offset_top = 28.0
-offset_right = 40.0
-offset_bottom = 51.0
-theme = ExtResource("7_tipki")
-text = "100"
-label_settings = SubResource("LabelSettings_85g3d")
+metadata/_edit_use_anchors_ = true
 
 [node name="EnemiesLabel" type="Label" parent="HUD/Labels" unique_id=1469157411]
 layout_mode = 0
-offset_top = 70.0
+offset_top = 102.0
 offset_right = 128.0
-offset_bottom = 93.0
+offset_bottom = 125.0
 theme = ExtResource("7_tipki")
 text = "Enemies:"
 label_settings = SubResource("LabelSettings_85g3d")
+metadata/_edit_use_anchors_ = true
+
+[node name="Hearts" type="HBoxContainer" parent="HUD" unique_id=846872005]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("9_ya4ey")
+full_texture = ExtResource("10_a8y0u")
+half_texture = ExtResource("11_jkv2x")
+empty_texture = ExtResource("12_jbj1t")
 
 [node name="PauseMenu" parent="." unique_id=939579672 instance=ExtResource("4_tbgi4")]
 visible = false

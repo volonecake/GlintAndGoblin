@@ -9,7 +9,7 @@ extends Node2D
 @onready var pause_menu = $PauseMenu
 @onready var game_over = $GameOver
 @onready var wave_label: Label = $HUD/Labels/WaveLabel
-@onready var hp_label: Label = $HUD/Labels/HPLabel
+@onready var hearts: HeartsDisplay = $HUD/Hearts
 @onready var enemies_label: Label = $HUD/Labels/EnemiesLabel
 @onready var banner: Label = $HUD/Banner
 
@@ -26,7 +26,7 @@ func _ready() -> void:
 	wave_manager.start()
 
 func _on_health_changed(current: int, maximum: int) -> void:
-	hp_label.text = "HP: %d/%d" % [current, maximum]
+	hearts.set_health(current, maximum)
 
 func _on_wave_started(wave: int) -> void:
 	wave_label.text = "Wave %d" % wave
