@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://sbpjrnuv6agl" path="res://textures/playeranims/0-5.png" id="5_y4r1p"]
 [ext_resource type="Texture2D" uid="uid://bwp6ggsubdkej" path="res://textures/playeranims/0-4.png" id="6_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://vs1cbg4gf55p" path="res://textures/playeranims/idleup.png" id="6_y4r1p"]
+[ext_resource type="Texture2D" uid="uid://b5k1u74fgeib7" path="res://textures/slide_left.png" id="7_3v2ag"]
 [ext_resource type="Script" uid="uid://b41ef6350vfue" path="res://scripts/camera_2d.gd" id="11_d2wvv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
@@ -43,6 +44,30 @@ region = Rect2(0, 0, 224, 224)
 [sub_resource type="AtlasTexture" id="AtlasTexture_cs1tg"]
 atlas = ExtResource("6_y4r1p")
 region = Rect2(224, 0, 224, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dvfe"]
+atlas = ExtResource("7_3v2ag")
+region = Rect2(0, 0, 448, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_giy8y"]
+atlas = ExtResource("7_3v2ag")
+region = Rect2(448, 0, 448, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fdfoy"]
+atlas = ExtResource("7_3v2ag")
+region = Rect2(896, 0, 448, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhpqf"]
+atlas = ExtResource("7_3v2ag")
+region = Rect2(1344, 0, 448, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5jhy"]
+atlas = ExtResource("7_3v2ag")
+region = Rect2(1792, 0, 448, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_holxr"]
+atlas = ExtResource("7_3v2ag")
+region = Rect2(2240, 0, 448, 224)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
 atlas = ExtResource("3_smehm")
@@ -188,6 +213,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_2dvfe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_giy8y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fdfoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhpqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g5jhy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_holxr")
+}],
+"loop": 0,
+"name": &"slide_left",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_f1ej7")
 }, {
 "duration": 1.0,
@@ -293,7 +341,7 @@ fireball_scene = ExtResource("2_smehm")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=364170053]
 scale = Vector2(0.18, 0.18)
 sprite_frames = SubResource("SpriteFrames_h25qb")
-animation = &"walk_up"
+animation = &"slide_left"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1122324265]
 position = Vector2(0, 0.5)

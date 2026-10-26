@@ -38,6 +38,7 @@ var aim_timer := 0.0
 var last_facing := Vector2.DOWN
 var knockback_timer := 0.0
 var flash_tween: Tween
+var roll_flip := false
 
 var health: int
 var hit_timer := 0.0
@@ -134,6 +135,19 @@ func _start_roll(input_dir: Vector2) -> void:
 	velocity = roll_dir * roll_speed
 	get_tree().call_group("camera", "add_trauma", 0.08)
 
+	last_facing = roll_dir 
+
+	if absf(roll_dir.x) > absf(roll_dir.y):
+		sprite.flip_h = roll_dir.x > 0.0
+		var frames := sprite.sprite_frames
+		var length := frames.get_frame_count("slide_left") / frames.get_animation_speed("slide_left")
+		sprite.speed_scale = length / roll_duration
+		sprite.play("slide_left")
+	else:
+		sprite.flip_h = false
+		sprite.speed_scale = 1.0
+		sprite.play("walk_down" if roll_dir.y > 0.0 else "walk_up")
+	
 func _process_roll(delta: float) -> void:
 	roll_time += delta
 	#full speed for the first 60%, then ease out
@@ -145,6 +159,8 @@ func _process_roll(delta: float) -> void:
 	if roll_time >= roll_duration:
 		is_rolling = false
 		is_invulnerable = false
+		sprite.flip_h = false
+		sprite.speed_scale = 1.0
 		await get_tree().create_timer(roll_cooldown, false).timeout
 		can_roll = true
 
