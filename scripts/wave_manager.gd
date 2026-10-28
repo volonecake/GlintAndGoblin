@@ -90,15 +90,28 @@ func _weighted_pick(options: Array) -> WaveEnemy:
 	return options.back()
 
 func _spawn(entry: WaveEnemy) -> void:
+	var pos := _pick_spawn_position()
+	alive += 1   # count now so the wave cant end while a telegraph is pending
+
+	var telegraph := SpawnTelegraph.new()
+	entities.add_child(telegraph)
+	telegraph.global_position = pos
+	await telegraph.finished
+
+	if not running:   # player dies during the telegraph
+		alive -= 1
+		return
+
 	var enemy := entry.scene.instantiate() as Enemy
 	var n := wave - 1
 	enemy.max_health = ceili(enemy.max_health * (1.0 + health_scale_per_wave * n))
 	enemy.speed *= minf(1.0 + speed_scale_per_wave * n, max_speed_mult)
+	enemy.contact_timer = 0.5   # can't hurt the player while fading in
+	enemy.modulate.a = 0.0
 	enemy.died.connect(_on_enemy_died)
 	entities.add_child(enemy)
-	enemy.global_position = _pick_spawn_position()
-	alive += 1
-
+	enemy.global_position = pos
+	create_tween().tween_property(enemy, "modulate:a", 1.0, 0.3)
 func _pick_spawn_position() -> Vector2:
 	var points := spawn_points.get_children()
 	points.shuffle()
