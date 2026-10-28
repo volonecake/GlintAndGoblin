@@ -18,6 +18,11 @@ func _process(delta: float) -> void:
 
 func _draw() -> void:
 	var p := clampf(t / duration, 0.0, 1.0)
-	# ring shrinks inward with a  circle growing and becomes brighter (actually help i think im tweaking)
-	draw_arc(Vector2.ZERO, radius * (1.3 - 0.5 * p), 0.0, TAU, 24, Color(color, 0.4 + 0.6 * p), 2.0)
-	draw_circle(Vector2.ZERO, radius * p * 0.8, Color(color, 0.25))
+
+	var outer := radius * (1.3 - 0.5 * p)
+	var outline := Rect2(Vector2(-outer, -outer), Vector2(outer, outer) * 2.0)
+	draw_rect(outline, Color(color, 0.4 + 0.6 * p), false, 2.0)
+
+	var inner := radius * p * 0.8
+	var fill := Rect2(Vector2(-inner, -inner), Vector2(inner, inner) * 2.0)
+	draw_rect(fill, Color(color, 0.25))
